@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIS", "RIS\RIS.csproj", "{F7B3D6BE-6043-41C5-A1FD-EA08D95E476E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7B3D6BE-6043-41C5-A1FD-EA08D95E476E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B3D6BE-6043-41C5-A1FD-EA08D95E476E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B3D6BE-6043-41C5-A1FD-EA08D95E476E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B3D6BE-6043-41C5-A1FD-EA08D95E476E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE862370-5B05-4148-828D-20F3987DD713}
+	EndGlobalSection
+EndGlobal
