@@ -51,7 +51,9 @@
             this.Location_lst = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.Status_strip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Status_Info_lbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Status_Running_Time_lbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Status_Queue_lbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSimulationTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,8 +61,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beginSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
@@ -271,20 +273,38 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Status_strip});
+            this.Status_Info_lbl,
+            this.Status_Running_Time_lbl,
+            this.Status_Queue_lbl});
             this.statusStrip1.Location = new System.Drawing.Point(0, 393);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(506, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // Status_strip
+            // Status_Info_lbl
             // 
-            this.Status_strip.AutoSize = false;
-            this.Status_strip.Name = "Status_strip";
-            this.Status_strip.Size = new System.Drawing.Size(100, 17);
-            this.Status_strip.Text = "Status:";
-            this.Status_strip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Status_Info_lbl.AutoSize = false;
+            this.Status_Info_lbl.Name = "Status_Info_lbl";
+            this.Status_Info_lbl.Size = new System.Drawing.Size(120, 17);
+            this.Status_Info_lbl.Text = "Status:";
+            this.Status_Info_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Status_Running_Time_lbl
+            // 
+            this.Status_Running_Time_lbl.AutoSize = false;
+            this.Status_Running_Time_lbl.Name = "Status_Running_Time_lbl";
+            this.Status_Running_Time_lbl.Size = new System.Drawing.Size(100, 17);
+            this.Status_Running_Time_lbl.Text = "Time: 00:00";
+            this.Status_Running_Time_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Status_Queue_lbl
+            // 
+            this.Status_Queue_lbl.AutoSize = false;
+            this.Status_Queue_lbl.Name = "Status_Queue_lbl";
+            this.Status_Queue_lbl.Size = new System.Drawing.Size(80, 17);
+            this.Status_Queue_lbl.Text = "Queue:";
+            this.Status_Queue_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // menuStrip1
             // 
@@ -341,6 +361,13 @@
             this.beginSimulationToolStripMenuItem.Name = "beginSimulationToolStripMenuItem";
             this.beginSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.beginSimulationToolStripMenuItem.Text = "&Begin Simulation";
+            this.beginSimulationToolStripMenuItem.Click += new System.EventHandler(this.beginSimulationToolStripMenuItem_Click);
+            // 
+            // pauseSimulationToolStripMenuItem
+            // 
+            this.pauseSimulationToolStripMenuItem.Name = "pauseSimulationToolStripMenuItem";
+            this.pauseSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseSimulationToolStripMenuItem.Text = "&Pause Simulation";
             // 
             // stopSimulationToolStripMenuItem
             // 
@@ -348,12 +375,6 @@
             this.stopSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopSimulationToolStripMenuItem.Text = "&Stop Simulation";
             this.stopSimulationToolStripMenuItem.Click += new System.EventHandler(this.stopSimulationToolStripMenuItem_Click);
-            // 
-            // pauseSimulationToolStripMenuItem
-            // 
-            this.pauseSimulationToolStripMenuItem.Name = "pauseSimulationToolStripMenuItem";
-            this.pauseSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pauseSimulationToolStripMenuItem.Text = "&Pause Simulation";
             // 
             // helpToolStripMenuItem
             // 
@@ -366,7 +387,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             // 
             // Form1
@@ -421,7 +442,7 @@
         private System.Windows.Forms.Button Remove_Location_btn;
         private System.Windows.Forms.Button Add_Location_btn;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel Status_strip;
+        private System.Windows.Forms.ToolStripStatusLabel Status_Info_lbl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox Log_Success_check;
         private System.Windows.Forms.CheckBox Log_Ignored_check;
@@ -438,6 +459,8 @@
         private System.Windows.Forms.ToolStripMenuItem pauseSimulationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel Status_Running_Time_lbl;
+        private System.Windows.Forms.ToolStripStatusLabel Status_Queue_lbl;
     }
 }
 
