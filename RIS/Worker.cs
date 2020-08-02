@@ -24,7 +24,7 @@ namespace RIS
         {
             List<File> Files_to_Process = null;
 
-            while (Manager.GetRunning() || (Manager.GetQueueSize()>0))
+            while (true)
             {
                     Files_to_Process = Manager.GetTask();
                     if (Files_to_Process.Count() > 0)
@@ -32,7 +32,6 @@ namespace RIS
                     else
                         Thread.Sleep(1);
             }
-
         //Delete our thread ?
         }
 

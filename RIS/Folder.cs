@@ -54,6 +54,7 @@ namespace RIS
                 }
                 catch (Exception E)
                 {
+                    Logger.Write(E);
                 }
 
             }

@@ -26,7 +26,7 @@ namespace RIS
             Lock = new Semaphore(1, 1);
             Status_Lock = new Semaphore(1, 1);
             MAX_TASKS_PER_THREAD = 20;
-            MAX_THREADS          = 4;
+            MAX_THREADS          = 2;
 
             //Worker Thread creation
             for (int i = 0; i < MAX_THREADS; i++)
@@ -70,8 +70,12 @@ namespace RIS
             Logger.Write("Starting scan process");
             Folder F = new Folder((String)Name, (String)Name);
 
-            SetRunning(false);
+            while (Manager.GetQueueSize() > 0)
+            {
+                Thread.Sleep(10);
+            }
 
+            SetRunning(false);
             Logger.Write("Scan process for " + Name + " Complete");
         }
 

@@ -12,19 +12,21 @@ namespace RIS
         public String Name;
         public String Location;
         public EncryptionResult Result;
+        public long Size;
 
 
         public File(String sName, String sLocation)
         {
-            Name = sName;
-            Location = sLocation;
-            Result = EncryptionResult.NOT_PROCESSED;
+            Name        = sName;
+            Location    = sLocation;
+            Size        = 0;
+            Result      = EncryptionResult.NOT_PROCESSED;
         }
 
 
         public static void Process(ref File F)
         {
-            Logger.Write("Testing " + F.Name);
+            
 
             try
             {
@@ -32,12 +34,16 @@ namespace RIS
                 if (fs.CanWrite)
                 {
                     F.Result = EncryptionResult.SUCCESS;
+                    F.Size = new System.IO.FileInfo(F.Name).Length;
+                    Logger.Write("(SUCCESS) " + F.Name);
                 }
                 fs.Close();
             }
             catch (Exception E)
             {
                 F.Result = EncryptionResult.FAILURE_OTHER;
+                Logger.Write("(FAILED) " + F.Name);
+                Logger.Write(E);
             }
         }
 

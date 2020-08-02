@@ -13,6 +13,7 @@ namespace RIS
         static Semaphore Lock   = null;
         private static List<String> WorkQueue;
         static Thread LogThread = null;
+        static Int32 MAX_LOGS   = 100;
 
         static Logger()
         {
@@ -50,8 +51,8 @@ namespace RIS
             while (true)
             {
                 Lock.WaitOne();
-                if (WorkQueue.Count() > 10)
-                    TaskLength = 10;
+                if (WorkQueue.Count() > MAX_LOGS)
+                    TaskLength = MAX_LOGS;
                 else
                     TaskLength = WorkQueue.Count();
 
@@ -71,7 +72,7 @@ namespace RIS
                         
                 }
 
-            Thread.Sleep(100);
+            Thread.Sleep(10);
             }
 
         }

@@ -50,7 +50,7 @@ namespace RIS
         private void beginSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SystemThread = new Thread(Manager.Process);
-            SystemThread.Start("C:\\AMD");
+            SystemThread.Start("D:\\");
 
             Status_Queue_lbl.Text = "Queue: 0";
             Status_Info_lbl.Text = "Status: Running";
@@ -59,7 +59,7 @@ namespace RIS
 
             Manager.SetRunning(true);
 
-            while (Manager.GetRunning() || (Manager.GetQueueSize()>0))
+            while (Manager.GetRunning())
             {
                 Application.DoEvents();
                 String RunningTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",Running_Timer.Elapsed.Hours, Running_Timer.Elapsed.Minutes, Running_Timer.Elapsed.Seconds, Running_Timer.Elapsed.Milliseconds/10);
