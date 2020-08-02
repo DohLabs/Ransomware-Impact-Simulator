@@ -303,7 +303,7 @@
             this.Status_Queue_lbl.AutoSize = false;
             this.Status_Queue_lbl.Name = "Status_Queue_lbl";
             this.Status_Queue_lbl.Size = new System.Drawing.Size(80, 17);
-            this.Status_Queue_lbl.Text = "Queue:";
+            this.Status_Queue_lbl.Text = "Queue size:";
             this.Status_Queue_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // menuStrip1

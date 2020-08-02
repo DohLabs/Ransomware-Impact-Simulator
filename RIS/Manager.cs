@@ -16,6 +16,7 @@ namespace RIS
         private static Semaphore        Status_Lock;
         private static Int32            MAX_TASKS_PER_THREAD;
         private static Int32            MAX_THREADS;
+        private static String[]         Extensions;
 
 
 
@@ -34,6 +35,13 @@ namespace RIS
                 Thread t = new Thread(Worker.Run);
                 t.Start();
             }
+        }
+
+        public static void SetExtensions(String[] Exts)
+        {
+            Lock.WaitOne();
+                Extensions = Exts;
+            Lock.Release();
         }
 
         public static void AddTask(ref File F)
@@ -68,7 +76,7 @@ namespace RIS
             SetRunning(true);
 
             Logger.Write("Starting scan process");
-            Folder F = new Folder((String)Name, (String)Name);
+            Folder F = new Folder((String)Name, Extensions);
 
             while (Manager.GetQueueSize() > 0)
             {

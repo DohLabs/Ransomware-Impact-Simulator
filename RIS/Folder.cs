@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace RIS
 {
@@ -13,7 +14,7 @@ namespace RIS
         private List<Folder>    Folders;
         private List<File>      Files;
 
-        public Folder(String fName, String Location)
+        public Folder(String fName, String[] Patterns)
         {
             Name        = fName;
             Folders     = new List<Folder>();
@@ -30,8 +31,9 @@ namespace RIS
                 //Add any files to our TaskList
                 try
                 {
-                    String[] sFiles = Directory.GetFiles(fName);
-                    foreach (String S in sFiles)
+                    //var sFiles = Directory.GetFiles(fName).Where(file => allowedExtensions.Any(file.ToLower().EndsWith))
+                    var files = Directory.GetFiles(fName).Where(file => Patterns.Contains(Path.GetExtension(file).ToLower()));
+                    foreach (String S in files)
                     {
                         File F = new File(S, fName);
                         Files.Add(F);
@@ -48,7 +50,7 @@ namespace RIS
                     String[] sFolders = Directory.GetDirectories(TargetName);
                     foreach (String S in sFolders)
                     {
-                        Folder F = new Folder(S, fName);
+                        Folder F = new Folder(S,Patterns);
                         Folders.Add(F);
                     }
                 }

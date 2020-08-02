@@ -50,14 +50,29 @@ namespace RIS
         private void beginSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SystemThread = new Thread(Manager.Process);
-            SystemThread.Start("D:\\");
+            
+            
 
-            Status_Queue_lbl.Text = "Queue: 0";
+            Status_Queue_lbl.Text = "Queue size: 0";
             Status_Info_lbl.Text = "Status: Running";
             Running_Timer.Reset();
             Running_Timer.Start();
 
+
+            List<String> E = new List<string>();
+            foreach (DataGridViewRow item in Include_Files_list.Rows)
+            {
+                if(item.Cells[0].Value !=null)
+                    E.Add(item.Cells[0].Value.ToString());
+            }
+            Manager.SetExtensions(E.ToArray());
+
+
+            SystemThread.Start("H:\\");
             Manager.SetRunning(true);
+
+
+
 
             while (Manager.GetRunning())
             {
@@ -67,7 +82,7 @@ namespace RIS
                 Thread.Sleep(10);
 
                 //Show our Queue Size
-                Status_Queue_lbl.Text = "Queue: " + Manager.GetQueueSize();
+                Status_Queue_lbl.Text = "Queue size: " + Manager.GetQueueSize();
             }
 
 
