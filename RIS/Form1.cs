@@ -89,5 +89,16 @@ namespace RIS
             Running_Timer.Stop();
             Status_Info_lbl.Text = "Status: Stopped";
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 B = new AboutBox1();
+            B.Show();
+        }
     }
 }
