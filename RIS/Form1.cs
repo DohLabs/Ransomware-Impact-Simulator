@@ -51,8 +51,6 @@ namespace RIS
         {
             SystemThread = new Thread(Manager.Process);
             
-            
-
             Status_Queue_lbl.Text = "Queue size: 0";
             Status_Info_lbl.Text = "Status: Running";
             Running_Timer.Reset();
@@ -66,24 +64,24 @@ namespace RIS
                     E.Add(item.Cells[0].Value.ToString());
             }
             Manager.SetExtensions(E.ToArray());
-
-
-            SystemThread.Start("H:\\");
             Manager.SetRunning(true);
 
+            string[] DestinationLocations = Location_lst.Items.OfType<string>().ToArray();
 
-
+            SystemThread.Start(DestinationLocations);
 
             while (Manager.GetRunning())
-            {
-                Application.DoEvents();
-                String RunningTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",Running_Timer.Elapsed.Hours, Running_Timer.Elapsed.Minutes, Running_Timer.Elapsed.Seconds, Running_Timer.Elapsed.Milliseconds/10);
-                Status_Running_Time_lbl.Text = RunningTime;
-                Thread.Sleep(10);
+                {
+                    Application.DoEvents();
+                    String RunningTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", Running_Timer.Elapsed.Hours, Running_Timer.Elapsed.Minutes, Running_Timer.Elapsed.Seconds, Running_Timer.Elapsed.Milliseconds / 10);
+                    Status_Running_Time_lbl.Text = RunningTime;
+                
+                    Thread.Sleep(10);
 
-                //Show our Queue Size
-                Status_Queue_lbl.Text = "Queue size: " + Manager.GetQueueSize();
-            }
+                    //Show our Queue Size
+                    Status_Queue_lbl.Text = "Queue size: " + Manager.GetQueueSize();
+                }
+
 
 
             Running_Timer.Stop();
@@ -99,6 +97,26 @@ namespace RIS
         {
             AboutBox1 B = new AboutBox1();
             B.Show();
+        }
+
+        private void Add_Location_btn_Click(object sender, EventArgs e)
+        {
+            if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Location_lst.Items.Add(folderBrowserDialog1.SelectedPath);
+            }
+        }
+
+        private void Remove_Location_btn_Click(object sender, EventArgs e)
+        {
+
+            string[] Selected = Location_lst.SelectedItems.OfType<string>().ToArray();
+
+
+            foreach (String S in Selected)
+            {
+                Location_lst.Items.Remove(S);
+            }
         }
     }
 }

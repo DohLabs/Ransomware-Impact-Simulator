@@ -252,6 +252,7 @@
             this.Remove_Location_btn.TabIndex = 2;
             this.Remove_Location_btn.Text = "Remove";
             this.Remove_Location_btn.UseVisualStyleBackColor = true;
+            this.Remove_Location_btn.Click += new System.EventHandler(this.Remove_Location_btn_Click);
             // 
             // Add_Location_btn
             // 
@@ -261,6 +262,7 @@
             this.Add_Location_btn.TabIndex = 1;
             this.Add_Location_btn.Text = "Add";
             this.Add_Location_btn.UseVisualStyleBackColor = true;
+            this.Add_Location_btn.Click += new System.EventHandler(this.Add_Location_btn_Click);
             // 
             // Location_lst
             // 
@@ -388,7 +390,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 

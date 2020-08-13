@@ -71,21 +71,29 @@ namespace RIS
         }
 
 
-        public static void Process(Object Name)
+        public static void Process(Object Destinations)
         {
+            String[] DestinationName = (String[])Destinations;
+
             SetRunning(true);
 
-            Logger.Write("Starting scan process");
-            Folder F = new Folder((String)Name, Extensions);
-
-            while (Manager.GetQueueSize() > 0)
+            //Perform a loop for all destinations to scan
+            foreach (String Name in DestinationName)
             {
-                Thread.Sleep(10);
+                Logger.Write("Starting scan process for " + Name);
+                Folder F = new Folder((String)Name, Extensions);
+
+                while (Manager.GetQueueSize() > 0)
+                {
+                    Thread.Sleep(10);
+                }
+                Logger.Write("Scan process for " + Name + " Complete");
             }
 
-            SetRunning(false);
-            Logger.Write("Scan process for " + Name + " Complete");
+        SetRunning(false);
         }
+
+
 
 
         public static void SetRunning(bool R)
