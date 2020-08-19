@@ -17,15 +17,15 @@ namespace RIS
         private static Int32            MAX_TASKS_PER_THREAD;
         private static Int32            MAX_THREADS;
         private static String[]         Extensions;
-
+        private static Folder           Scan_Results;
 
 
         static Manager()
         {
-            Running = false;
-            Tasks = new List<File>();
-            Lock = new Semaphore(1, 1);
-            Status_Lock = new Semaphore(1, 1);
+            Running         = false;
+            Tasks           = new List<File>();
+            Lock            = new Semaphore(1, 1);
+            Status_Lock     = new Semaphore(1, 1);
             MAX_TASKS_PER_THREAD = 20;
             MAX_THREADS          = 2;
 
@@ -77,6 +77,8 @@ namespace RIS
 
             SetRunning(true);
 
+            Scan_Results = new Folder("",null);
+
             //Perform a loop for all destinations to scan
             foreach (String Name in DestinationName)
             {
@@ -88,11 +90,18 @@ namespace RIS
                     Thread.Sleep(10);
                 }
                 Logger.Write("Scan process for " + Name + " Complete");
+
+                Scan_Results.MergeResult(F);
             }
 
         SetRunning(false);
         }
 
+
+        public static Folder GetResult()
+        {
+            return (Scan_Results);
+        }
 
 
 

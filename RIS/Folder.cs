@@ -10,9 +10,9 @@ namespace RIS
 {
     public class Folder
     {
-        private String          Name;
-        private List<Folder>    Folders;
-        private List<File>      Files;
+        public String           Name;
+        public List<Folder>     Folders;
+        public List<File>       Files;
 
         public Folder(String fName, String[] Patterns)
         {
@@ -62,5 +62,13 @@ namespace RIS
             }
 
         }
+
+        public bool MergeResult(Folder F)
+        {
+            Folders.Add(F);
+            return (true);
+        }
+
+
     }
 }

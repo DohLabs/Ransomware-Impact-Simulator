@@ -83,9 +83,14 @@ namespace RIS
                 }
 
 
-
             Running_Timer.Stop();
             Status_Info_lbl.Text = "Status: Stopped";
+
+            //We have our results
+            Folder F = Manager.GetResult();
+            Results R = new Results();
+            R.LoadResults(F);
+            R.Visible = true;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

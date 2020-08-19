@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Results));
+            this.ResultView = new System.Windows.Forms.TreeView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,15 +39,19 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.displaySuccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Icons = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeView1
+            // ResultView
             // 
-            this.treeView1.Location = new System.Drawing.Point(13, 30);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(775, 408);
-            this.treeView1.TabIndex = 0;
+            this.ResultView.ImageIndex = 0;
+            this.ResultView.ImageList = this.Icons;
+            this.ResultView.Location = new System.Drawing.Point(13, 30);
+            this.ResultView.Name = "ResultView";
+            this.ResultView.SelectedImageIndex = 0;
+            this.ResultView.Size = new System.Drawing.Size(775, 408);
+            this.ResultView.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -107,16 +113,25 @@
             this.displaySuccessToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.displaySuccessToolStripMenuItem.Text = "Display Success";
             // 
+            // Icons
+            // 
+            this.Icons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Icons.ImageStream")));
+            this.Icons.TransparentColor = System.Drawing.Color.Transparent;
+            this.Icons.Images.SetKeyName(0, "lock-icon.png");
+            this.Icons.Images.SetKeyName(1, "Accept-icon.png");
+            this.Icons.Images.SetKeyName(2, "folder-icon.png");
+            // 
             // Results
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.ResultView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Results";
             this.Text = "Result Explorer";
+            this.Load += new System.EventHandler(this.Results_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -126,7 +141,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView ResultView;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -135,5 +150,6 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem displaySuccessToolStripMenuItem;
+        private System.Windows.Forms.ImageList Icons;
     }
 }
