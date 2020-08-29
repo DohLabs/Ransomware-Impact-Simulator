@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace RIS
 {
+
+    [Serializable]
     public class File
     {
         public String Name;

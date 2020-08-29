@@ -341,6 +341,7 @@
             this.openReportToolStripMenuItem.Name = "openReportToolStripMenuItem";
             this.openReportToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.openReportToolStripMenuItem.Text = "&Open Result Report";
+            this.openReportToolStripMenuItem.Click += new System.EventHandler(this.openReportToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -362,20 +363,20 @@
             // beginSimulationToolStripMenuItem
             // 
             this.beginSimulationToolStripMenuItem.Name = "beginSimulationToolStripMenuItem";
-            this.beginSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beginSimulationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.beginSimulationToolStripMenuItem.Text = "&Begin Simulation";
             this.beginSimulationToolStripMenuItem.Click += new System.EventHandler(this.beginSimulationToolStripMenuItem_Click);
             // 
             // pauseSimulationToolStripMenuItem
             // 
             this.pauseSimulationToolStripMenuItem.Name = "pauseSimulationToolStripMenuItem";
-            this.pauseSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseSimulationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.pauseSimulationToolStripMenuItem.Text = "&Pause Simulation";
             // 
             // stopSimulationToolStripMenuItem
             // 
             this.stopSimulationToolStripMenuItem.Name = "stopSimulationToolStripMenuItem";
-            this.stopSimulationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopSimulationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.stopSimulationToolStripMenuItem.Text = "&Stop Simulation";
             this.stopSimulationToolStripMenuItem.Click += new System.EventHandler(this.stopSimulationToolStripMenuItem_Click);
             // 

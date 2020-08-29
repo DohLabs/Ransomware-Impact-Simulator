@@ -123,5 +123,11 @@ namespace RIS
                 Location_lst.Items.Remove(S);
             }
         }
+
+        private void openReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Results R = new Results();
+            R.Show();
+        }
     }
 }

@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace RIS
 {
+    [Serializable]
     public class Folder
     {
-        public String           Name;
-        public List<Folder>     Folders;
-        public List<File>       Files;
+        public String Name;
+        public List<Folder> Folders;
+        public List<File> Files;
 
         public Folder(String fName, String[] Patterns)
         {
-            Name        = fName;
-            Folders     = new List<Folder>();
-            Files       = new List<File>();
+            Name = fName;
+            Folders = new List<Folder>();
+            Files = new List<File>();
 
             String TargetName = fName;
 
@@ -50,7 +52,7 @@ namespace RIS
                     String[] sFolders = Directory.GetDirectories(TargetName);
                     foreach (String S in sFolders)
                     {
-                        Folder F = new Folder(S,Patterns);
+                        Folder F = new Folder(S, Patterns);
                         Folders.Add(F);
                     }
                 }
@@ -69,6 +71,26 @@ namespace RIS
             return (true);
         }
 
+
+        public static bool WriteResult(String Filename, Folder F)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream S = new FileStream(Filename, FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(S, F);
+            S.Close();
+
+            return (true);
+        }
+
+
+        public static Folder LoadResult(String Filename)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream S = new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+            Folder F = (Folder) formatter.Deserialize(S);
+            S.Close();
+            return (F);
+        }
 
     }
 }

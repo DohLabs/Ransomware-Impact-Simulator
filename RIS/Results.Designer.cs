@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Results));
             this.ResultView = new System.Windows.Forms.TreeView();
+            this.Icons = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,8 +39,10 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.displaySuccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Icons = new System.Windows.Forms.ImageList(this.components);
+            this.Show_Protected_Menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.Show_Stats_Menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +55,14 @@
             this.ResultView.SelectedImageIndex = 0;
             this.ResultView.Size = new System.Drawing.Size(775, 408);
             this.ResultView.TabIndex = 0;
+            // 
+            // Icons
+            // 
+            this.Icons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Icons.ImageStream")));
+            this.Icons.TransparentColor = System.Drawing.Color.Transparent;
+            this.Icons.Images.SetKeyName(0, "lock-icon.png");
+            this.Icons.Images.SetKeyName(1, "Accept-icon.png");
+            this.Icons.Images.SetKeyName(2, "folder-icon.png");
             // 
             // menuStrip1
             // 
@@ -80,12 +91,14 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
@@ -102,24 +115,29 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.displaySuccessToolStripMenuItem});
+            this.Show_Protected_Menu,
+            this.Show_Stats_Menu});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.optionsToolStripMenuItem.Text = "Filter";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.optionsToolStripMenuItem.Text = "View";
             // 
-            // displaySuccessToolStripMenuItem
+            // Show_Protected_Menu
             // 
-            this.displaySuccessToolStripMenuItem.Name = "displaySuccessToolStripMenuItem";
-            this.displaySuccessToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.displaySuccessToolStripMenuItem.Text = "Display Success";
+            this.Show_Protected_Menu.CheckOnClick = true;
+            this.Show_Protected_Menu.Name = "Show_Protected_Menu";
+            this.Show_Protected_Menu.Size = new System.Drawing.Size(157, 22);
+            this.Show_Protected_Menu.Text = "Show Protected";
+            this.Show_Protected_Menu.CheckedChanged += new System.EventHandler(this.Show_Protected_Menu_CheckedChanged);
             // 
-            // Icons
+            // Show_Stats_Menu
             // 
-            this.Icons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Icons.ImageStream")));
-            this.Icons.TransparentColor = System.Drawing.Color.Transparent;
-            this.Icons.Images.SetKeyName(0, "lock-icon.png");
-            this.Icons.Images.SetKeyName(1, "Accept-icon.png");
-            this.Icons.Images.SetKeyName(2, "folder-icon.png");
+            this.Show_Stats_Menu.Name = "Show_Stats_Menu";
+            this.Show_Stats_Menu.Size = new System.Drawing.Size(157, 22);
+            this.Show_Stats_Menu.Text = "Show Stats";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Results
             // 
@@ -149,7 +167,10 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem displaySuccessToolStripMenuItem;
         private System.Windows.Forms.ImageList Icons;
+        private System.Windows.Forms.ToolStripMenuItem Show_Protected_Menu;
+        private System.Windows.Forms.ToolStripMenuItem Show_Stats_Menu;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
